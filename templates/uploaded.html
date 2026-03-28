@@ -1,0 +1,229 @@
+
+{% extends "layout.html" %} 
+
+
+{% block styles %}
+    <style>
+        /* Add custom styles here */
+        .jumbotron {
+            background-color: #f8f9fa; /* Light gray background */
+            padding: 50px 0; /* Add padding to the jumbotron */
+            border-radius: 10px; /* Add border radius to the jumbotron */
+        }
+
+        .container {
+            text-align: center; /* Center align content */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Blue primary button color */
+            border-color: #007bff;
+            margin-top: 10px; /* Add margin to the top of the buttons */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3;
+        }
+
+        /* Add additional styles for table, input, etc. if needed */
+        table {
+            width: 100%; /* Make tables fill the container width */
+            margin-bottom: 20px; /* Add spacing below the tables */
+        }
+
+        input[type="number"] {
+            width: 70px; /* Set width for number inputs */
+            margin-right: 10px; /* Add spacing between number inputs */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron jumbotron-fluid text-center">
+    <h1 class="display-1">Menu</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Common</h2>
+                <div class="d-flex flex-wrap">
+                    
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('normal') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Usual</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('grayscale') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Grayscale</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('zoomin') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Zoom In</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('zoomout') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Zoom Out</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Shift</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_left') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Left</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_right') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Right</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_up') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Up</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_down') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Down</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Lighting</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 flex-fill bd-highlight">
+                        <div class="p-2 flex-fill bd-highlight">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <form id="" action="{{ url_for('brightness_multiplication') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                <button type="submit" class="btn btn-primary">Light (*)</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form id="" action="{{ url_for('brightness_division') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                <button type="submit" class="btn btn-primary">Dark (/)</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <form id="" action="{{ url_for('brightness_addition') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                <button type="submit" class="btn btn-primary">Light (+)</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form id="" action="{{ url_for('brightness_substraction') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                <button type="submit" class="btn btn-primary">Dark (-)</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-4">
+                <h2>Image Analysis</h2>
+                <div class="p-2 flex-fill bd-highlight">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <form id="" action="{{ url_for('histogram_rgb') }}" method="POST" enctype="multipart/form-data">
+                                    <button type="submit" class="btn btn-primary">Histogram</button>
+                                </form>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div> -->
+            <div class="col-md-4">
+                <h2>Image Processing</h2>
+                <div class="p-2 flex-fill bd-highlight">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <form id="" action="{{ url_for('histogram_equalizer') }}" method="POST" enctype="multipart/form-data">
+                                    <button type="submit" class="btn btn-primary">Histogram Equalizer</button>
+                                </form>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- <div class="col-md-4">
+                <h2>Image Filters</h2>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('edge_detection') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-primary">Edge Detection</button>
+                    </form>
+                </div>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('blur') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-primary">Blur</button>
+                    </form>
+                </div>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('sharpening') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-primary">Sharpening</button>
+                    </form>
+                </div>
+            </div> -->
+            <!-- <div class="col-md-4">
+                <h2>Segmentation</h2>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('thresholding') }}" method="POST" enctype="multipart/form-data">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Lower Limit</th>
+                                    <th>Upper Limit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="number" name="lower_thres" placeholder="0-255"></td>
+                                    <td><input type="number" name="upper_thres" placeholder="0-255"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><button type="submit" class="btn btn-primary">Thresholding</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>After</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_path) }}" alt="image here">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+</style>
+{% endblock %}
+
+    

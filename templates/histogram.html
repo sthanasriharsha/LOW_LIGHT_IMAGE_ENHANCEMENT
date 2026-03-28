@@ -1,0 +1,297 @@
+<!--
+{% extends "layout.html" %} {% block body %}
+<div class="jumbotron jumbotron-fluid text-center">
+    <h1 class="display-1">Menu</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Common</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('normal') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Usual</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('grayscale') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Grayscale</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('zoomin') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Zoom In</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('zoomout') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Zoom Out</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Shift</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_left') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Left</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_right') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Right</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_up') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Up</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_down') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Down</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Lighting</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('brightness_multiplication') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Light (*)</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('brightness_division') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Dark (/)</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('brightness_addition') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Light (+)</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('brightness_substraction') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Dark (-)</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Image Analysis</h2>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('histogram_rgb') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-primary">Histogram</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    {% if file_paths[2] %}
+                    <div class="col-md-4">
+                        <h3>Image RGB</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename='img/img_now.jpg') }}" alt="image here">
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Red Histogram</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_paths[0]) }}" alt="image here">
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Green Histogram</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_paths[1]) }}" alt="image here">
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Blue Histogram</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_paths[2]) }}" alt="image here">
+                    </div>
+                    {% else %}
+                    <div class="col-md-6">
+                        <h3>Image Greyscaled</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename='img/img_now.jpg') }}" alt="image here">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Black Histogram</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_paths[0]) }}" alt="image here">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+</style>
+{% endblock %}-->
+{% extends "layout.html" %}
+
+{% block styles %}
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background for the entire page */
+        }
+
+        .jumbotron {
+            background-color: #343a40; /* Dark background for the main section */
+            color: #ffffff; /* White text color */
+            border-radius: 15px; /* Add border radius to the jumbotron */
+            margin-top: 20px; /* Add some margin at the top */
+            padding: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff; /* Blue heading color */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Blue primary button color */
+            border-color: #007bff;
+            margin-top: 10px; /* Add margin to the top of buttons */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3;
+        }
+
+        img.img-fluid {
+            border-radius: 5px; /* Add border radius to images */
+            margin-top: 10px; /* Add margin to the top of images */
+        }
+
+        /* Add additional styling as needed */
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1 class="display-1">Menu</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Common</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('normal') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Usual</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('grayscale') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Grayscale</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('zoomin') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Zoom In</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('zoomout') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Zoom Out</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Shift</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_left') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Left</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_right') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Right</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_up') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Up</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_down') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Swipe Down</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Lighting</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('brightness_multiplication') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Light (*)</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('brightness_division') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Dark (/)</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('brightness_addition') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Light (+)</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('brightness_substraction') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary">Dark (-)</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Image Analysis</h2>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('histogram_rgb') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-primary">Histogram</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    {% if file_paths[2] %}
+                    <div class="col-md-4">
+                        <h3>Image RGB</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename='img/img_now.jpg') }}" alt="image here">
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Red Histogram</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_paths[0]) }}" alt="image here">
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Green Histogram</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_paths[1]) }}" alt="image here">
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Blue Histogram</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_paths[2]) }}" alt="image here">
+                    </div>
+                    {% else %}
+                    <div class="col-md-6">
+                        <h3>Image Greyscaled</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename='img/img_now.jpg') }}" alt="image here">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Black Histogram</h3>
+                        <img class="img-fluid" src="{{ url_for('static', filename=file_paths[0]) }}" alt="image here">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
